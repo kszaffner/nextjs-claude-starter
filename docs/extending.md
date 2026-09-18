@@ -72,8 +72,10 @@ system without a redesign:
 - Every piece (`rules/`, `skills/`, `knowledge/`, `agents/`, `hooks/`) is
   self-contained and file-based — an installer could template these in
   directly.
-- `.dependency-cruiser.cjs` has no hardcoded example module names, so
-  it's copy-safe into any project as-is.
+- `ai-workflow-config/dependency-cruiser.cjs` has no hardcoded example module names,
+  so it's copy-safe into any project as-is — and any future starter-owned
+  config file lands in `ai-workflow-config/` alongside it, rather than as a new
+  root-level dotfile the copy instructions have to track individually.
 - The onboarding flow (`docs/getting-started.md`, "Onboarding") is
   already detect → report → propose → developer decides, which is exactly
   the shape an installer's first run should follow — it just isn't

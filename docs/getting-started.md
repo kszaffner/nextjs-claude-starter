@@ -20,15 +20,19 @@ could build on this same structure.
    .claude/
    CLAUDE.md
    AGENTS.md
-   .dependency-cruiser.cjs
+   ai-workflow-config/
    ```
+
+   `ai-workflow-config/` holds non-Claude project config this starter ships
+   (currently just `dependency-cruiser.cjs`) — copy the whole folder so
+   future additions travel with it automatically.
 
 2. Merge (don't overwrite) `package.json` scripts — add:
 
    ```json
    {
      "scripts": {
-       "architecture:check": "depcruise src --config .dependency-cruiser.cjs",
+       "architecture:check": "depcruise src --config ai-workflow-config/dependency-cruiser.cjs",
        "check": "pnpm lint && pnpm typecheck && pnpm architecture:check && pnpm test"
      }
    }
@@ -45,7 +49,7 @@ could build on this same structure.
    migrate automatically**. Run the onboarding check below and decide
    deliberately — see "Onboarding" section.
 
-5. Adjust `.dependency-cruiser.cjs` if your source root isn't `src/`.
+5. Adjust `ai-workflow-config/dependency-cruiser.cjs` if your source root isn't `src/`.
 
 ## Copying into an existing project
 

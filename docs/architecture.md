@@ -106,7 +106,7 @@ Internal file layout inside a module is free to change as long as
 
 ## Enforcement
 
-Mechanical enforcement lives in `.dependency-cruiser.cjs` (see that file
+Mechanical enforcement lives in `ai-workflow-config/dependency-cruiser.cjs` (see that file
 for commented rule definitions) and runs via:
 
 ```text

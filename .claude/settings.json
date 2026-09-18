@@ -1,12 +1,49 @@
 {
+  "permissions": {
+    "allow": [
+      "Read(.claude/hooks/secret-guard.py)",
+      "Edit(.claude/hooks/secret-guard.py)",
+      "Write(.claude/hooks/secret-guard.py)"
+    ]
+  },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/.claude/hooks/secret-guard.py\""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/protect-files.sh\""
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write",
         "hooks": [
           {
             "type": "command",
-            "command": "node .claude/hooks/lint-changed-file.cjs"
+            "command": "node ${CLAUDE_PROJECT_DIR}/.claude/hooks/lint-changed-file.cjs"
+          }
+        ]
+      }
+    ], "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code needs your attention\" with title \"Claude Code\"'"
           }
         ]
       }

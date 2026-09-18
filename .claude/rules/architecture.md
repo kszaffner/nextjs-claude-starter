@@ -35,7 +35,7 @@ Forbidden:
 - circular dependencies of any length (`A → B → A`, or longer cycles)
 
 These are enforced mechanically by `pnpm architecture:check`
-(dependency-cruiser, see `.dependency-cruiser.cjs`). Do not rely on review
+(dependency-cruiser, see `ai-workflow-config/dependency-cruiser.cjs`). Do not rely on review
 alone to catch violations — run the check.
 
 ## Public APIs

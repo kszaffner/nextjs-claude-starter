@@ -11,8 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "architecture:check": "depcruise src --config .dependency-cruiser.cjs",
-    "architecture:graph": "depcruise src --config .dependency-cruiser.cjs --output-type dot",
+    "architecture:check": "depcruise src --config ai-workflow-config/dependency-cruiser.cjs",
+    "architecture:graph": "depcruise src --config ai-workflow-config/dependency-cruiser.cjs --output-type dot",
     "check": "pnpm lint && pnpm typecheck && pnpm architecture:check && pnpm test"
   },
   "dependencies": {

@@ -22,7 +22,7 @@ business sense," "should this be a Server or Client Component." That
 judgment belongs to Claude, reasoning inside the workflow described in
 `CLAUDE.md` and `.claude/skills/`. Mechanical structural constraints
 (dependency direction, public API boundaries, cycles) are enforced by
-`.dependency-cruiser.cjs` + `pnpm architecture:check`, and by ESLint/
+`ai-workflow-config/dependency-cruiser.cjs` + `pnpm architecture:check`, and by ESLint/
 TypeScript — not by a hook re-implementing that judgment in shell.
 
 See `docs/extending.md` for how to add a project-specific hook without
