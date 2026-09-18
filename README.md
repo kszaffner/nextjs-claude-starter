@@ -7,9 +7,9 @@ a prompt collection.
 
 ## 1. What this is
 
-A set of files (`.claude/`, `CLAUDE.md`, `AGENTS.md`,
-`.dependency-cruiser.cjs`) you copy into a Next.js project so Claude Code
-works as an engineering assistant that follows an explicit process:
+A set of files (`.claude/`, `CLAUDE.md`, `AGENTS.md`, `ai-workflow-config/`) you
+copy into a Next.js project so Claude Code works as an engineering
+assistant that follows an explicit process:
 
 ```text
 Rules → Skills → Knowledge → Architecture → Verification → Code Review → controlled implementation
@@ -38,13 +38,20 @@ need *some* process. See `docs/workflow.md`.
 ├── agents/       # agent strategy (minimal by default)
 └── hooks/        # deterministic hook strategy + example
 
+ai-workflow-config/
+└── dependency-cruiser.cjs   # mechanical architecture enforcement
+
 docs/             # extended documentation for each piece above
 example/          # worked SMALL/NORMAL/LARGE workflow walkthroughs
 src/              # example app: app/ modules/ shared/
 CLAUDE.md         # short project-facing entry point
 AGENTS.md         # repository-facing entry point for coding agents
-.dependency-cruiser.cjs   # mechanical architecture enforcement
 ```
+
+`ai-workflow-config/` holds non-Claude project configuration copied alongside
+`.claude/` — currently just `dependency-cruiser.cjs`, and the place any
+future starter-owned config file (beyond what `.claude/` itself covers)
+should land, instead of scattering more dotfiles at the repo root.
 
 ## 4. How to install / copy it
 
@@ -52,7 +59,7 @@ V1 is copy-paste — see `docs/getting-started.md` for the full steps.
 Short version:
 
 ```text
-1. Copy .claude/, CLAUDE.md, AGENTS.md, .dependency-cruiser.cjs into your project
+1. Copy .claude/, CLAUDE.md, AGENTS.md, ai-workflow-config/ into your project
 2. Add the architecture:check / check scripts to your package.json
 3. pnpm add -D dependency-cruiser
 4. Don't migrate your existing src/ structure automatically — read
@@ -93,7 +100,7 @@ Feature-oriented: `src/app` (thin routes) → `src/modules/<name>`
 (business-agnostic reusable code). `shared → modules`, reaching into
 another module's internals, and circular dependencies are forbidden and
 mechanically enforced via `pnpm architecture:check`
-(`.dependency-cruiser.cjs`) — proven by real negative/positive tests in
+(`ai-workflow-config/dependency-cruiser.cjs`) — proven by real negative/positive tests in
 `test/architecture.test.ts`. Full detail: `docs/architecture.md`.
 
 ## 8. Workflow

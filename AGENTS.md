@@ -24,7 +24,7 @@ and `module A → module B` when it's a real business dependency (always
 through B's public API, never B's internals). Forbidden:
 `shared → modules`, reaching into another module's internal files, and
 any circular dependency. This is enforced mechanically by
-`.dependency-cruiser.cjs` (`pnpm architecture:check`), not just by
+`ai-workflow-config/dependency-cruiser.cjs` (`pnpm architecture:check`), not just by
 convention. Full rationale: `docs/architecture.md`,
 `.claude/rules/architecture.md`.
 
@@ -38,6 +38,7 @@ convention. Full rationale: `docs/architecture.md`,
 ├── agents/       # agent strategy (V1: minimal, see agents/README.md)
 └── hooks/        # deterministic hook strategy, see hooks/README.md
 
+ai-workflow-config/           # non-Claude project config copied alongside .claude/
 docs/             # extended documentation
 example/          # notes on the example app under src/
 src/              # the example app itself (app/modules/shared)
@@ -58,7 +59,7 @@ pnpm check                # aggregates lint + typecheck + architecture:check + t
 
 ## Architecture entry points
 
-- `.dependency-cruiser.cjs` — the enforced rules (circular deps,
+- `ai-workflow-config/dependency-cruiser.cjs` — the enforced rules (circular deps,
   `shared → modules`, module-internal reach-through, invalid direction).
 - `test/architecture.test.ts` + `test/fixtures/architecture/*` — negative
   and positive tests proving those rules actually fire.

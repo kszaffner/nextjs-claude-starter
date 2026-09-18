@@ -17,7 +17,7 @@ Initial release.
 - Feature-oriented `src/app` / `src/modules/<name>` / `src/shared`
   structure with an enforced public-API boundary (`index.ts` per
   module).
-- `.dependency-cruiser.cjs` mechanically enforces: no circular
+- `ai-workflow-config/dependency-cruiser.cjs` mechanically enforces: no circular
   dependencies, no `shared → modules`, no reaching into another module's
   internals, no `app` reaching into module internals.
 - `test/architecture.test.ts` + `test/fixtures/architecture/*`: real,

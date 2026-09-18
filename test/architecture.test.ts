@@ -5,13 +5,13 @@ import { describe, expect, it } from "vitest";
 /**
  * These tests actually invoke dependency-cruiser against small fixture
  * repositories (test/fixtures/architecture/*) using the starter's real
- * `.dependency-cruiser.cjs` rules. They exist to prove the architecture
- * rules are mechanically enforced, not merely documented.
+ * `ai-workflow-config/dependency-cruiser.cjs` rules. They exist to prove the
+ * architecture rules are mechanically enforced, not merely documented.
  */
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 const DEPCRUISE_BIN = path.join(REPO_ROOT, "node_modules", ".bin", "depcruise");
-const CONFIG_PATH = path.join(REPO_ROOT, ".dependency-cruiser.cjs");
+const CONFIG_PATH = path.join(REPO_ROOT, "ai-workflow-config", "dependency-cruiser.cjs");
 
 type CruiseResult = {
   exitCode: number;
